@@ -17,7 +17,8 @@ KNN_Julia(
   oxygene,
   mort = 0,
   blesse = 0,
-  nvoisin = 5
+  nvoisin = 5,
+  norme = 2
 )
 }
 \arguments{

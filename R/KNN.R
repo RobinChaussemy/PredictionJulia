@@ -28,7 +28,7 @@ string_process <- function(cdc){
 #' @examples KNN_Julia("Ama Dablam","Autumn","France","Climber",2025,1,20,0,0,0,0,0,5)
 
 
-KNN_Julia <- function(sommet,saison,nationalite,role,annee,sexe,age,pro,solo,oxygene,mort=0,blesse=0,nvoisin = 5){
-  KNN_result <- jl4R::jl(paste0("JuliaPredict.KNN_Process(JuliaPredict.get_data(),",c_indiv(string_process(sommet),string_process(saison),string_process(nationalite),string_process(role),str_to_int(annee),strbool_to_int(sexe),str_to_int(age),strbool_to_int(pro),strbool_to_int(solo),strbool_to_int(oxygene),mort,blesse),",",nvoisin,")"))
+KNN_Julia <- function(sommet,saison,nationalite,role,annee,sexe,age,pro,solo,oxygene,mort=0,blesse=0,nvoisin = 5,norme = 2){
+  KNN_result <- jl4R::jl(paste0("JuliaPredict.KNN_Process(JuliaPredict.get_data(),",c_indiv(string_process(sommet),string_process(saison),string_process(nationalite),string_process(role),str_to_int(annee),strbool_to_int(sexe),str_to_int(age),strbool_to_int(pro),strbool_to_int(solo),strbool_to_int(oxygene),mort,blesse),",",nvoisin,",",norme,")"))
   return(list(prediction = R(KNN_result[1]),temps = R(KNN_result[2])))
 }
